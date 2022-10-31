@@ -39,7 +39,7 @@ Equivalently, $f(p(t), q(t), t) = \text{const}$, if $p(t)$ and $q(t)$ satisfy \e
 
 Hamilton's equations will be solvable, if there are ``sufficiently'' many constants of motion.
 
-\begin{example}
+\paragraph{Example}
 	System with one degree of freedom with $\M = \R^2$ and Hamiltonian $H = \frac{1}{2} p^2 + V(q)$. The Hamilton's equations are
 	\begin{equation*}
 		\dot{q} = p, \quad \dot{p} = - \pdv{V}{q}	.
@@ -51,7 +51,6 @@ Hamilton's equations will be solvable, if there are ``sufficiently'' many consta
 		\Rightarrow t &= \pm \int \frac{\dd{q}}{\sqrt{2(E-V(q))}}
 	\end{align*}
 	Explicit solution could be found if the integral can be performed and the relation $t=t(q)$ can be inverted to get $q(t)$. These two steps are not always possible, but still it is called \textbf{integrable}.
-\end{example}
 
 One can also look at the systems \textbf{geometrically}. First integrals defines $f(p, q)=\text{const.}$ in $\M$. Two hypersurfaces corresponding to two first integrals generically intersect in surface of dimension $2$ in $\M$. In general, trajectory lies on a surface of dimension $(2n-L)$ with $L$ the number of independent first integrals. If $L=2n-1$, this ``surface'' is a curve, i.e. a solution to Hamilton's equations.
 
@@ -95,32 +94,32 @@ There are other possibilities with
 Can we find canonical transformation that manifests integrability such that $P_k(t) = P_k(0) =\text{const}$ $n$ constant of motion and $Q_k(t) = Q_k(0) + t \pdv{H}{p_k}$ with linear time dependence. To find such a transformation is in general hard. Deciding whether a given $H$ is integrable is still unsolved problem.
 
 \begin{theorem} (Arnold and Liouville)
-	Let $(\M, f_1, \dots, f_n)$ be integrable system with a Hamiltonian $H=f_1$ and let	
+	Let $(\M, f_1, \dots, f_n)$ be an integrable system with a Hamiltonian $H=f_1$ and let	
 	\begin{equation*}
-		\M_f = \left\{ (p, q) \in \M | f_k (p, q) = c_k = \text{const}, k=1, \dots, n \right\} 	
+		\M_f = \left\{ (p, q) \in \M \, |\, f_k (p, q) = c_k = \text{const},\, k=1, \dots, n \right\} 	
 	\end{equation*}
-	be a so-called $n$ dimensional level set of first integral $f_n$.
-	\begin{itemize}
+	be a so-called $n$ dimensional level set of first integrals $f_n$.
+	\begin{enumerate}
 		\item if $M_f$ is compact and connected, then it is diffeomorphism to torus $T^n = S^1 \times \cdots \times S^1$.
-		\item One introduces (neighborhood of this torus in $M$) the action angle variables 
+		\item One introduces (in the neighborhood of this torus in $M$) the action angle variables 
 			\begin{equation*}
 				I_1, \dots, I_n, \quad \phi_1, \dots, \phi_n, \quad 0 \leq \phi_n \leq 2\pi	
 			\end{equation*}
-			such thant the angles $\phi_k$ are coordinates on $M_f$ and the action (variable) $I_k=I_k(f_1, \dots, f_n)$ are first integrals.
+			such that the angles $\phi_k$ are coordinates on $M_f$ and the action (variable) $I_k=I_k(f_1, \dots, f_n)$ are first integrals.
 		\item The canonical equations of motion \eqref{math:ham-eom} becomes
 			\begin{equation}
 				\dot{I}_k = 0, \quad \dot{\phi}_k = \omega_k (I_1, \dots, I_n), \quad k =1, \dots,n 
 				\label{math:action-angle-eom}
 			\end{equation}
 			and the integrable system is solved by \textbf{quadratures} (finite number of algebraic equations and integrations of know functions).
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
 
 \paragraph{Proof} (not to prove $(1)$ here). On $(2)$ and $(3)$
 
 Motion takes place on surface of dimension $2n -n = n$
 \begin{equation}
-	f_1 (p,q) = c_1, \dots, f_n(p, q) = c_n .
+	f_1 (p,q) = c_1,\; \dots,\; f_n(p, q) = c_n .
 	\label{math:arnold-theorem-first-integral}
 \end{equation}
 From $(1)$, this surface is a torus. Assume $\det(\pdv{f_i}{p_k}) \neq 0$ such that \eqref{math:arnold-theorem-first-integral} can be solved for the momenta $p_i = p_i (q, c)$ with $f_i(q, p(q,c )) = c_i$
@@ -132,27 +131,24 @@ From $(1)$, this surface is a torus. Assume $\det(\pdv{f_i}{p_k}) \neq 0$ such t
 	\left( \pdv{f_i}{p_k} \right) \text{ invertible} &\Rightarrow \pdv{p_k}{q_j} - \pdv{p_j}{q_k} = 0, \\
 	\text{Stockes' theorem} &\Rightarrow \oint_{\mathcal{G}} \sum_{j=1}^{n} p_j \dd{q_j} = 0,
 \end{align*}
-for any closed curve on torus $T^n$ such are contractible to a point. 
-
-On $T^n$ there are $n$ closed curves that cannot be contracted to a point, such that the corresponding integrals do not vanish.
+for any closed curve on torus $T^n$ such are contractible to a point. On $T^n$ there are $n$ closed curves that cannot be contracted to a point, such that the corresponding integrals do not vanish.
+\todo{Is compactness a condition for Stockes' theorem?}
 
 \begin{definition}
 \textbf{action variable}
-
 \begin{equation}
 	I_k := \frac{1}{2\pi} \oint_{\Gamma_k} \sum_{i=1}^{n} p_j \dd{q_j}, \quad k = 1, \dots, n
 	\label{math:action-variable-def}
 \end{equation}
 where the curve $\Gamma_k$ is the $k$-th basic cycle on the torus $T^n$
 \begin{equation*}
-\Gamma_k = \left\{ (\tilde{\phi}_1, \dots \tilde{\phi}_n) \in T^n; 0 \leq \tilde{\phi}_k \leq 2\pi, \tilde{\phi}_j = \text{const, for} j\neq k  \right\}.
+\Gamma_k = \left\{ (\tilde{\phi}_1, \dots \tilde{\phi}_n) \in T^n;\; 0 \leq \tilde{\phi}_k \leq 2\pi, \tilde{\phi}_j = \text{const, for} j\neq k  \right\}.
 \end{equation*}
-\todo{Why is this integral not zero? Compactness?}
 
 \end{definition}
-$\tilde{\phi}_k$ denotes some coordinates on $T^n$. This is non-trivial, in practice it is not clear how to describe a torus explicitly. Arnold-Liouville theorem has character of existence theorem. \todo{why is it non-trivial? In 2d case, they can be parametrised easily.}
+$\tilde{\phi}_k$ denotes some coordinates on $T^n$. To find these coordinates is non-trivial, in practice it is not clear how to describe a torus explicitly. Arnold-Liouville theorem has character of existence theorem. \todo{why is it non-trivial? In 2d case, they can be parametrised easily.}
 
-Stockes theorem implies the action \eqref{math:action-variable-def} are independent of choice of $\Gamma_k$. The action \eqref{math:action-variable-def} are first integrals since $\oint p(q, c) \dd{q}$ only depend on $c_k = f_k$ and $f_k$'s are first integrals.
+Stockes' theorem implies the action variables \eqref{math:action-variable-def} are independent of choice of $\Gamma_k$. The action variable \eqref{math:action-variable-def} are first integrals since $\oint p(q, c) \dd{q}$ only depend on $c_k = f_k$ and $f_k$'s are first integrals.
 
 We have all the action variable in involution, since
 \begin{align*}
@@ -161,16 +157,17 @@ We have all the action variable in involution, since
 					  &=0.
 	\label{eq:}
 \end{align*}
-In particular $\pb{I_k}{H}=0$. The torus $\mathcal{M}_f$ can be equivalently defined ny 
+In particular $\pb{I_k}{H}=0$. 
+
+The torus $\mathcal{M}_f$ can be equivalently defined ny 
 \begin{equation*}
 	I_1 = \tilde{c}_c, 	\dots, I_n = \tilde{c}_n
 \end{equation*}
-
 One may ask why is $I_k$ (as coordinate) better than $f_k$. If one defines $I_k = f_k$, the transformation $(p, q) \rightarrow (I, \phi)$ would not be canonical. 
 
-Canonical \textbf{angle} coordinates $\phi_k$, which is the canonically conjugate to the actions via the generating functions
+Canonical angle coordinates $\phi_k$, which are the canonically conjugates to the actions via the generating functions
 \begin{equation}
-	S(q, I) = \int_{q_0}^{q} \sum_j p_j \dd{q_j}
+	S(q, I) = \int_{q_0}^{q} \sum_j p_j \dd{q_j},
 \end{equation}
 with $q_0$ some point on the torus. Modifying $q_0$ just adds a constant to $S$. The angle coordinates are
 \begin{equation*}
@@ -179,7 +176,7 @@ with $q_0$ some point on the torus. Modifying $q_0$ just adds a constant to $S$.
 The angles are periodic. Consider two paths $C$ and $C \cup C_k$ (with $C_k = \Gamma_k$ the $k$-th cycle) between $q_0$ and $q$, see figure \ref{fig:torus-angle}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/torus-angle.jpg}
+	\includegraphics[width=0.4\textwidth]{./figs/torus-angle.jpg}
 	\caption{Torus with two paths $C$ and $C\cup C_k$}
 	\label{fig:torus-angle}
 \end{figure}
@@ -274,3 +271,178 @@ Thus
 	q &= \sqrt{\frac{2 E}{\omega}} \sin(\omega t + \phi_0) \\
 	p &= \pdv{H}{p} = \dot{q} = \sqrt{2E} \cos(\omega t + \phi_0)
 \end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  lecture 3
+\paragraph{Example} The Kepler Problem ($n=2$)
+
+Consider the Motion in two-dimensional phase space (reduced from three-dimensional to two-dimensional using angular momentum conservation). Then we have four dimensional phase space $q_1 = \phi, q_2 = r, p_1 = p_\phi, p_2 = p_r$. The Hamiltonian is
+\begin{equation*}
+	H = \frac{p_\phi^2}{2r^2 } + \frac{p_r^2}{2} - \frac{\alpha}{r}
+\end{equation*} 
+with a positive constant $\alpha$. We have $\pb{H}{p_\phi} = 0$, the system is (Liouville) integrable ($2$ constants of motion). 
+
+Level set $\M_f: H=E; p_\phi=\mu$. Then we can solve for $p_r$
+\begin{align*}
+	p_r = \pm \sqrt{2E - \frac{\mu^2}{r^2} + \frac{2\alpha}{r}}.
+\end{align*}
+$\phi$ is arbitrary, one constraint on $(r, p_r)$. Parametrize $\M_f$ by $\phi$ and function of $(r, p_r)$. Vary $\phi$ and fix other coordinate, consider one cycle $\Gamma_\phi \subset \M_f$
+\begin{align*}
+	I_\phi &= \frac{1}{2\pi} \oint_{\Gamma_\phi} \left( p_r \dd{r}+p_\phi \dd{\phi}  \right), \\
+			 &= \frac{1}{2\pi} \int_0^{2\pi} p_\phi \dd{\phi} = \mu,
+\end{align*}
+
+To find the second action, fix $\phi$
+\begin{align*}
+	I_r &= \frac{1}{2\pi} \oint_{\Gamma_r} p_r \dd{r},	 \\
+			 &= 2 \cdot \frac{1}{2\pi}\int_{r_-}^{r_+} \sqrt{2E - \frac{\mu^2}{r^2} + \frac{2\alpha}{r}} \dd{r},
+\end{align*}
+where we have taken the positive and negative roots and integrate $r_- \rightarrow r_+$ and backwards. Turning points $r_\pm$ are solutions of $2E - \frac{\mu^2}{r^2} + \frac{2\alpha}{r} = 0$ ($p_r \in \R$). Integral can be done using residual calculus 
+\begin{equation*}
+	I_r = \alpha \sqrt{\frac{1}{2 |E|}} - \mu = \alpha \sqrt{\frac{1}{2 |E|}} - I_\phi.
+\end{equation*}
+Thus, the Hamiltonian written in terms of actions is
+\begin{align*}
+	\tilde{H} &= - \frac{\alpha^2}{2(I_r + I_\phi)^2}, \\
+	\Rightarrow \pdv{\tilde{H}}{I_r} &= \pdv{\tilde{H}}{I_\phi} = \frac{\alpha^2}{(I_r + I_\phi)^3}.
+\end{align*}
+This is a particular case with $\omega_r = \omega_\phi$, and therefore closed orbits.
+
+
+\paragraph{Superintegrability} 
+One may wonder why $\tilde{H} = \tilde{H}(I_r + I_\phi) $. Is there some special property in the system unexplored?  In general, an integrable system admits $n$ independent actions $I_k$, that can be uniquely expressed as functions of the system's state. We may write $(n-1)$ additional constants of motion as 
+\begin{equation*}
+	A_{ik} := \phi_i \pdv{H}{I_k} - \phi_k \pdv{H}{I_i}
+\end{equation*}
+remember $\dot{\phi_k} = \pdv{H}{I_k} = \omega_k$. Since $\phi_k = \phi_k + 2\pi$, the $A_{ik}$'s are not unique functions.
+
+Suppose we have a degenerate system, e.g.
+\begin{equation}
+	a_1 \pdv{H}{I_2}	= a_2 \pdv{H}{I_2}
+	\label{math:a_1_a_2}
+\end{equation}
+for $a_1, a_2 \in \Z$. Then 
+\begin{equation*}
+	B_{12} := a_1 \phi_1 - a_2 \phi_2,
+\end{equation*}
+is a constant of motion with $B_{12} = B_{12} + 2\pi n, n\in \Z$. Any trigonometric function of $B_{12}$ is unique constant of motion. Here \eqref{math:a_1_a_2} implies $H=H(a_2 I_1 + a_1 I_2)$. For the Kepler problem, the additional symmetry is the well-known \textbf{Laplace-Runge-Lenz vector}.
+
+\begin{definition}
+	A Hamiltonian system with $2n$-dimensional phase space and more than $n$ independent constants of motion is called \textbf{superintegrable}. If the system has $2n-1$ independent constants of motion, it is \textbf{maximally superintegrable}.
+\end{definition}
+
+\section{Poisson Structures}
+Consider phase space $\M$ of dimension $m$ with local coordinates ($\xi^1, \dots, \xi^n$), where we make no distinction between coordinates and momenta.
+
+\begin{definition}
+	A skew-symmetric matrix $\omega^{ab} = \omega^{ab} (\xi)$	 is called a \textbf{Poisson structure}, if the Poisson bracket defined by 
+	\begin{equation*}
+		\pb{f}{g} =  \sum_{a, b = 1}^m \omega^{ab} (\xi) \pdv{f}{\xi^a} \pdv{g}{\xi^b}
+	\end{equation*}
+satisfies  $\pb{f}{g} = - \pb{g}{f}$ and the Jacobi identity.
+\end{definition}
+The Jacobi identity puts restrictions on $\omega^{ab}(\xi) = \pb{\xi^a}{\xi^b}$
+\begin{align*}
+	\sum_{d=1}^{m} \left( \omega^{dc} \pdv{\omega^{ab}}{\xi^d} + \omega^{db} \pdv{\omega^{ca}}{\xi^d} + \omega^{da} \pdv{\omega^{bc}}{\xi^d} \right) 	 = 0
+\end{align*}
+
+Given a Hamiltonian $H: \M \times \R \rightarrow \R$, the dynamics is given by
+\begin{equation*}
+	\dv{f}{t} = \pdv{f}{t} + \pb{f}{H}
+\end{equation*}
+and the Hamilton's equations generalizing \eqref{math:ham-eom} 
+\begin{equation*}
+	\dot{\xi}^a = \sum_{b=1}^m \omega^{ab}(\xi) \pdv{H}{\xi^b}
+\end{equation*}
+
+\paragraph{Example}
+$\M = \R^3, \omega^{ab} = \sum_{c=1}^{3} \epsilon^{abc} \xi^c$, then
+\begin{equation*}
+	\pb{\xi^a}{\xi^b} = \epsilon^{abc} \xi^c = \sum \epsilon^{abc} \xi^c
+\end{equation*}
+This Poisson structure admits a Casimir, namaly any function $f(r)$, where
+\begin{equation*}
+	r = \sqrt{(\xi^1)^2 + (\xi^2)^2 + (\xi^3)^2},
+\end{equation*}
+and Poisson-commutes with the coordinate function $\pb{f(r)}{\xi^a}=0$.
+
+\paragraph{Symplectic structures}
+Assume $m=2n$ even and $\omega$ invertible with $W := \omega^{-1}$. Jacobi identity implies
+\begin{equation*}
+	\partial_a W_{bc} + \partial_c W_{ab} + \partial_b W_{ca} = 0,\quad \forall a, b, c = 1, \dots, m
+\end{equation*}
+In this case we call $W$ a \textbf{symplectic structure}.
+
+The \textbf{Darboux theorem} states that there exists locally coordinate system with 
+\begin{equation*}
+	\xi^1 = q_1, \dots, \xi^n = q_n, \xi^{n+1} = p_1, \dots, \xi^{2n} = p_n
+\end{equation*}
+such that 
+\begin{equation*}
+	\omega = \begin{pmatrix} 0 & \id_n \\ -\id_n & 0 \end{pmatrix}
+\end{equation*}
+and the Poisson bracket reduces to the standard form.
+
+\paragraph{Example} (Spinning Euler Top)
+
+The coordinates are just the angular momentum $\xi^{1, 2, 3} = S^{x, y, z}$. The Hamiltonian is 
+\begin{equation*}
+	H = \frac{1}{2}\left[ \frac{(S^x)^2}{\Omega_x} + \frac{(S^y)^2}{\Omega_y} + \frac{(S^z)^2}{\Omega_z}\right] 
+\end{equation*}
+for angular momentum vector $\vec{S}$ of a rigid spinning body fixed at center of mass. $\Omega_i$ is the diagonal entry of moment of inertia matrix $\Omega$, such that $\vec{S} = \Omega \vec{\omega}$ with $\vec{\omega}$ the angular velocities. 
+
+Hamilton's equations (Euler equations) are
+\begin{equation*}
+	\dv{t} \vec{S} = - \pb{H} {\vec{S}} = \left( \Omega^{-1} \vec{S} \right)  \times \vec{S}.
+\end{equation*}
+(Sometimes written as three decoupled differential equations.)
+
+There are two conserved charges $H$ and $|\vec{S}|$. Use $H = E$ and $|\vec{S}|=l$ to write the equation of motion as 
+\begin{equation*}
+	\dv{t} S_x = \sqrt{A + B S_x^2 + C S_x^4}
+\end{equation*}
+with $A, B, C$ functions of $\Omega, l , E$. Extinguish three cases
+\begin{table}[ht]
+	\centering
+	\label{tab:label}
+	\begin{tabular}{c c c c}
+	\toprule
+	solution & rational & trigonometric & elliptic \\
+	\midrule
+	name & x x x & x x z & x y z \\
+	$\Omega_{x, y, z}$ & $\Omega_x, \Omega_x, \Omega_x$ & $\Omega_{x}, \Omega_x, \Omega_z$ & $\Omega_x, \Omega_y, \Omega_z$ \\
+	symmetry & $\SO(3)$ & $\SO(2)$ & - \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Classical chains and Fields}
+We can align elementary mechanical models on a one dimensional lattice and it yields a chain model. Examples are FPUT, Toda chain, classical spin chain. Infinite chains have infinitely many degrees of freedom. The question is how many (conserved) charges do we need for integrability? Precise meaning of integrability is not clear, won't discuss classical field here.
+
+\paragraph{Continuum limits} 
+Field theories are naturally understood as continuum limits of lattice models (chain). A well-behaved continuum limit of an integrable lattice model should be integrable.
+
+General idea is to consider one dimensional classical chain model of variable $\xi_j$. Sites are labelled by $j$ at position $x_j = x + j\cdot a$ with a constant lattice spacing $a = x_{j+1}  - x_j$. Continuum limit $a\rightarrow 0$. Fix limiting continuous field $\phi(x)$ via 
+\begin{equation*}
+	\xi_j = X_j (a, \phi(x_j))
+\end{equation*}
+with $X_j$ some function specifies the limit prescription (There is no well-defined continuous limit!).
+
+The Simplest example is $\xi_j = \phi(x_j)$. In the limit $a\rightarrow 0$ for instance 
+\begin{align*}
+	\phi'(x) &= \lim_{a\rightarrow 0} \frac{\phi(x_{j+1}) - \phi(x_j)}{a}, \\
+	\phi''(x) &= \lim_{a\rightarrow 0} \frac{\phi(x_{j+1}) - 2 \phi(x_j) + \phi(x_{j-1})}{a^2}, \dots
+\end{align*}
+Lattice sums turn into integrals
+\begin{equation*}
+	\lim_{a\rightarrow 0} a \sum_j (\dots) = \int \dd{x} \dots .
+\end{equation*}
+Delta function becomes kronecker delta
+\begin{equation*}
+	\delta(x-y) = \lim_{a\rightarrow 0} \frac{1}{a} \delta_{jk}
+\end{equation*}
+May have expressions including different points $x_j = x+ja$ and $x_k = y+ka$, such that 
+\begin{equation*}
+	x = \lim_{a\rightarrow 0} (x_0 + ja), y = \lim_{a\rightarrow 0} (x_0 + ka)
+\end{equation*}
+Definition of integrability for field theory is even worse than chain models.
