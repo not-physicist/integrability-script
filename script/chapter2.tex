@@ -1,0 +1,101 @@
+\chapter{Inverse scattering method and solitons}
+Our previous definition of (Liouville) integrability works for ODEs. No universal definition of integrability for PDEs. One of the problems is that the phase space is infinitely dimensional but having infinitely many first integrals may not be enough (need to compare these infinities). Focus on properties of solutions and solution techniques.
+
+\section{The KdV equation}
+John Scott Russell (1808-1882) made experiments  and find efficient design canal boats. His famous quote from Russell's ``Report on Waves'' (1844). Wave in shallow water described by Korteweg-de Vries (KdV) equations
+\begin{equation}
+	\phi_t - 6 \phi \phi_x + \phi_{x x x} = 0, \quad \phi = \phi(t, x)
+	\label{math:KdV}
+\end{equation}
+which is written down and solved by simplest case in 1895 by KdV to explain Russell's observation.
+
+\paragraph{Physical motivation for KdV equation}
+Start with linear wave equation 
+\begin{equation*}
+	\psi_{x x} - \frac{1}{v^2} \phi_{tt} = 0
+\end{equation*}
+with the velocity $v$. One can make three assumptions
+\begin{enumerate}
+	\item invariance in $t \rightarrow -t$
+	\item small amplitude; omit terms of order $\psi^2$
+	\item constant group velocity; no dispersion
+\end{enumerate}
+Relax assumptions to obtain arrive at KdV.
+
+Consider general solutions of wave equation
+\begin{equation*}
+	\psi(t, x) = f(x-vt) + g(x+vt)
+\end{equation*}
+where $f$ and $g$ can be arbitrary functions. These functions are each characterised by first order PDE, for example
+\begin{equation*}
+	\psi_x + \frac{1}{v} \psi_t = 0
+\end{equation*}
+with $\psi = f(x-vt)$.
+
+\paragraph{Introduce dispersion} Consider complex wave $\psi = e^{i(kx - \omega(k)t)}$ with $\omega(k) = vk$. The group velocity $\dv{\omega}{k} $ equals phase velocity $v$.
+
+Modify relation to introduce dispersion
+\begin{equation*}
+	\omega(k) = v(k - \beta k^3 + \dots)
+\end{equation*}
+and higher order terms in $k$ are negligible for small dispersion. Quadratic term leads to complex solution, undesirable.
+
+The function $\psi = e^{i(kx - v(kt - \beta k^3 t))}$ satisfies the differential equation
+\begin{equation*}
+	\psi_{x} + \beta \psi_{x x x} + \frac{1}{v} \psi_t = 0
+\end{equation*}
+Rewrite this as a conservation law
+\begin{equation*}
+	\rho_t + j_{x} = 0
+\end{equation*}
+if we identify
+\begin{equation*}
+	\rho = \frac{1}{v} \psi, \quad j = \psi + \beta \psi_{x x}
+\end{equation*}
+
+\paragraph{Introduce non-linearity} Modify current
+\begin{equation*}
+	j = \psi + \beta \psi_{x x} + \frac{\alpha}{2} \psi^2 
+\end{equation*}
+Then we have 
+\begin{equation*}
+	\frac{1}{v} \psi_t + \psi_x + \beta \psi_{ x x x} + \alpha \psi \psi_x = 0
+\end{equation*}
+The constants $(v, \beta, \alpha)$ can be eliminated by change of variables (e.g. linear combination of $x$ and $t$) and rescaling and one obtains the KdV equation \eqref{math:KdV}.
+
+The simplest one-soliton solution found by KdV (1895) is 
+\begin{equation}
+	\phi (t, x) = - \frac{2\chi^2}{\cosh^2[\chi(x-4\chi^2t - \phi_0)]}
+\end{equation}
+where $\phi_0$ location of extremum at $t=0$ and $\chi\in\R$ a free parameter.
+
+Note the function $c \cdot \phi$ with $c=\text{const}$ is no solution due to the non-linearity.
+
+\paragraph{Numerical evidence for special properties of KdV}
+Until 1965 equation \eqref{math:KdV} was the only regular solution $(\phi, \phi_x \stackrel{|x| \rightarrow \infty}{\rightarrow} 0)$. Zabusky and Krusal (1965) observed numerically that two waves scatter without changing their shape. This is particle-like behaviour, thus the name ``soliton'', i.e. solitary-ons (like electrons and so on). The existence of stable solitary wave is a consequence of cancellation between dispersion and non-linearity.
+
+Without dispersion $\phi_t - 6 \phi \phi_x = 0$ has the solution with discontinuity of first derivative at some $t_0 > 0$. Without non-linearity $\phi_t + \phi_{x x x} = 0$, then the wave will disperse. Only with both terms, we would have stable solutions.
+
+\section{Inverse scattering method (ISM)}
+The ISM to solve classical soliton equations comes from quantum mechanics.
+
+\paragraph{Mathematical framework for QM}
+Infinite-dimensional complex vector space $\mathcal{H}$ of functions. Wave functions $\psi \in \mathcal{H}, \psi: \R \rightarrow \C, \psi = \psi(x)$ (time independent). Inner product defined as 
+\begin{equation}
+	\lable \psi_1, \psi_2 \rangle = \int_{\R} \bar{\psi}_1 (x) \psi_2(t) \dd{x}
+\end{equation}
+Bound states are functions with $\langle \psi, \psi \rangle < \infty$ , e.g. $e^{-x^2}$.  Scattering states not square integrable, e.g. $e^{-ix}$.
+
+Given a (real ) potential $\phi = \phi(x)$, the time-indepdent Schrödinger equation (SE) reads 
+\begin{equation*}
+	- \frac{\hbar^2}{2m} \dv[2]{\psi}{x} + \phi \psi = E \psi
+\end{equation*}
+and represents eigenvalue problem. Given $\phi(x)$ one can solve the SE.
+
+Physical needs are typically different: measure scattering process/data, i.e. reflection and transmission coefficients and try to recover the potential from it. Now the problem is to recover potential from scattering data.
+
+In 1950s, solved by Delfandm, Levitan, Marchenko (GLM) using algorithm. 1967 Gardener, Greene, Krusal, Miura used that algorithm to solve the Cauchy problem for KdV.
+
+In scattering theory, Determine reflection ($R$) and transimission ($T$) coefficients with continuous energies. Bound state has discrete energy levels ($E$).
+
+GLM method knowledge of $(E, T, R)$ allows to relate the scattering data to the potential. Cauchy problem for KdV with some initial condition $\phi(0, x) = \phi_0 (x)$, in order to get $\phi(t, x)$. Instead, using Schrödinger equation, input scattering data at $t_0$, one get scattering data at $t > 0$. Using GLM integral equation, $\phi(t, x)$ can be computed. This is \textbf{inverse scattering method}.

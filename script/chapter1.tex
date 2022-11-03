@@ -446,3 +446,56 @@ May have expressions including different points $x_j = x+ja$ and $x_k = y+ka$, s
 	x = \lim_{a\rightarrow 0} (x_0 + ja), y = \lim_{a\rightarrow 0} (x_0 + ka)
 \end{equation*}
 Definition of integrability for field theory is even worse than chain models.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% lecture 4
+
+\paragraph{Hamiltonian formalism for fields}
+Formally, replace coordinates $\xi (t)$ by field variable $\phi(t, x)$, replace phase space $\M(=\R^m)$ by space of smooth functions on a line $(=\R)$ with some boundary conditions (e.g. decay, open, periodic). 
+\begin{table}[htpb]
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		elementary mechanics & fields \\
+		\midrule
+		$\xi^a(t), a = 1, \dots, m$ & $\phi(t, x), x\in \R$ \\
+		$\sum_a$ & $\int_{\R}\dd{x}$ \\
+		function $f(\xi)$ & functional $F[\phi]$ \\
+		$\pdv{\xi^a}$ & $\fdv{\phi}$ \\
+		ODEs $(t)$ & PDEs $(t, x)$ \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Functionals given by integrals
+\begin{equation*}
+	F[\phi] = \int_{\R} f(\phi, \phi_x, \phi_{x x }, \dots) \dd{x}
+\end{equation*}
+Recall 
+\begin{equation*}
+	\fdv{F}{\phi(x)} = \pdv{f}{\phi} - \pdv{x} \pdv{f}{\phi_x} + \pdv[2]{x} \pdv{f}{\phi_{x x}}
+\end{equation*}
+and 
+\begin{equation*}
+	\fdv{\phi(y)}{\phi(x)} = \delta(x-y)
+\end{equation*}
+with $\int_{\R} \delta(x) \dd{x} = 1$.
+
+\begin{definition}Poisson bracket in this case can be defined as 
+	\begin{equation*}
+		\pb{F}{G} = \int_{\R} \omega(x, y, \phi) \fdv{F}{\phi(x)} \fdv{G}{\phi(y)} \dd{x} \dd{y}
+	\end{equation*}
+with $\omega$ such that the Poisson bracket is anti-symmetric and obeys Jacobi-identity.
+\end{definition}
+
+Canonical choice
+\begin{equation*}
+	\delta(x, y, \phi) = \frac{1}{2} \partial_x \delta(x-y) - \frac{1}{2} \partial_y \delta(x-y)
+\end{equation*}
+It is analogous to Darboux form, where $\omega$ is constant and anti-symmetric. Antisymmetry is analogous to $\pdv{x}$ being anti-self-dual with respect to inner product $\langle \phi, \psi \rangle = \int_{\R} \phi(x) \psi(x) \dd{x}$. 
+
+Hence, the canonical bracket is 
+\begin{equation*}
+	\pb{F}{G} = \int_{\R} \fdv{F}{\phi(x)} \pdv{x} \fdv{G}{\phi(x)} \dd{x}
+\end{equation*}
+with Hamilton's equations $\pdv{\phi}{t} = \pb{\phi}{H[\phi]}$.
