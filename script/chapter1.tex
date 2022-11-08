@@ -409,11 +409,12 @@ with $A, B, C$ functions of $\Omega, l , E$. Extinguish three cases
 	\toprule
 	solution & rational & trigonometric & elliptic \\
 	\midrule
-	name & x x x & x x z & x y z \\
+	name & $x x x$ & $x x z$ & $x y z$ \\
 	$\Omega_{x, y, z}$ & $\Omega_x, \Omega_x, \Omega_x$ & $\Omega_{x}, \Omega_x, \Omega_z$ & $\Omega_x, \Omega_y, \Omega_z$ \\
-	symmetry & $\SO(3)$ & $\SO(2)$ & - \\
+	symmetry & $\SO(3)$ & $\SO(2)$ & $-$ \\
 	\bottomrule
 	\end{tabular}
+	\caption{}
 \end{table}
 
 \section{Classical chains and Fields}
@@ -465,6 +466,7 @@ Formally, replace coordinates $\xi (t)$ by field variable $\phi(t, x)$, replace 
 		ODEs $(t)$ & PDEs $(t, x)$ \\
 		\bottomrule
 	\end{tabular}
+	\caption{}
 \end{table}
 
 Functionals given by integrals
@@ -498,4 +500,7 @@ Hence, the canonical bracket is
 \begin{equation*}
 	\pb{F}{G} = \int_{\R} \fdv{F}{\phi(x)} \pdv{x} \fdv{G}{\phi(x)} \dd{x}
 \end{equation*}
-with Hamilton's equations $\pdv{\phi}{t} = \pb{\phi}{H[\phi]}$.
+with Hamilton's equations 
+\begin{equation}
+	\pdv{\phi}{t} = \pb{\phi}{H[\phi]}.
+\end{equation}
