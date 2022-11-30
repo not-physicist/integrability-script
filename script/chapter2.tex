@@ -1,44 +1,42 @@
 \chapter{Inverse scattering method and solitons}
-Our previous definition of (Liouville) integrability works for ODEs. There is no universal definition of integrability for PDEs. One of the problems is that the phase space is infinitely dimensional but having infinitely many first integrals may not be enough (need to compare these infinities). Focus on properties of solutions and solution techniques.
+Our previous definition of (Liouville) integrability works for ODEs. There is no universal definition of integrability for PDEs. One of the problems is that the phase space is infinitely dimensional but having infinitely many first integrals may not be enough (need to compare these infinities). We first focus on properties of solutions and solution techniques.
 
 \section{The KdV equation}
 John Scott Russell (1808-1882) made experiments  and find efficient design canal boats. His famous quote from Russell's ``Report on Waves'' (1844). Wave in shallow water described by Korteweg-de Vries (KdV) equations
 \begin{equation}
-	\phi_t - 6 \phi \phi_x + \phi_{x x x} = 0, \quad \phi = \phi(t, x)
+	\phi_t - 6 \phi \phi_x + \phi_{x x x} = 0, \quad \phi = \phi(t, x),
 	\label{math:KdV}
 \end{equation}
 which is written down and solved by simplest case in 1895 by KdV to explain Russell's observation.
 
 \paragraph{Physical motivation for KdV equation}
-Start with linear wave equation 
+Start with the linear wave equation 
 \begin{equation*}
 	\psi_{x x} - \frac{1}{v^2} \psi_{tt} = 0
 \end{equation*}
-with the velocity $v$. One can make three assumptions
+with the velocity $v$. Here one makes three assumptions
 \begin{enumerate}
-	\item invariance in $t \rightarrow -t$
-	\item small amplitude; omit terms of order $\psi^2$
-	\item constant group velocity; no dispersion
+	\item time reversal invariance ($t \rightarrow -t$),
+	\item small amplitude; omit terms of order $\psi^2$,
+	\item constant group velocity; no dispersion,
 \end{enumerate}
 One can relax assumptions to arrive at KdV equation \eqref{math:KdV}.
 
-Consider general solutions of wave equation
+Consider the general solutions of wave equation
 \begin{equation*}
 	\psi(t, x) = f(x-vt) + g(x+vt)
 \end{equation*}
 where $f$ and $g$ can be arbitrary functions. These functions are each characterised by first order PDE, for example
 \begin{equation*}
-	\psi_x + \frac{1}{v} \psi_t = 0
+	\psi_x + \frac{1}{v} \psi_t = 0,
 \end{equation*}
 with $\psi = f(x-vt)$.
 
-\paragraph{Introduce dispersion} Consider complex wave $\psi = e^{i(kx - \omega(k)t)}$ with $\omega(k) = vk$. The group velocity $\dv{\omega}{k} $ equals phase velocity $v$.
-
-Modify relation to introduce the dispersion
+\paragraph{Introduce dispersion} Consider complex wave $\psi = e^{i(kx - \omega(k)t)}$ with $\omega(k) = vk$. The group velocity $\dv{\omega}{k} $ equals phase velocity $v$. Modify the relation to introduce the dispersion
 \begin{equation*}
 	\omega(k) = v(k - \beta k^3 + \dots)
 \end{equation*}
-and higher order terms in $k$ are negligible for small dispersion. Quadratic term leads to complex solution, hence it is undesirable.
+and higher order terms in $k$ are negligible for small dispersion. Quadratic term leads to complex solution, hence not undesirable.
 
 The function $\psi = e^{i(kx - v(kt - \beta k^3 )t)}$ satisfies the differential equation
 \begin{equation*}
@@ -59,9 +57,9 @@ if we identify the current density and the flux
 \end{equation*}
 Then we have 
 \begin{equation*}
-	\frac{1}{v} \psi_t + \psi_x + \beta \psi_{ x x x} + \alpha \psi \psi_x = 0
+	\frac{1}{v} \psi_t + \psi_x + \beta \psi_{ x x x} + \alpha \psi \psi_x = 0.
 \end{equation*}
-The constants $(v, \beta, \alpha)$ can be eliminated by change of variables (e.g. linear combination of $x$ and $t$) and rescaling and one obtains the KdV equation \eqref{math:KdV}.
+The constants $(v, \beta, \alpha)$ can be eliminated by change of variables (e.g. a linear combination of $x$ and $t$) and rescaling and one obtains the KdV equation \eqref{math:KdV}.
 
 The simplest one-soliton solution found by KdV (1895) is \footnote{Note that since the equation is non-linear, superposition principle doesn't apply, i.e. there is a fundamental difference between one-soliton solution and many-soliton solution.}
 \begin{equation}
@@ -79,12 +77,12 @@ Without dispersion $\phi_t - 6 \phi \phi_x = 0$ has the solution with discontinu
 The ISM to solve classical soliton equations comes from quantum mechanics.
 
 \paragraph{Mathematical framework for QM}
-Infinite-dimensional complex vector space $\mathcal{H}$ of functions. Wave functions $\psi \in \mathcal{H}, \psi: \R \rightarrow \Co, \psi = \psi(x)$ (time independent). Inner product defined as 
+Infinite-dimensional complex vector space $\mathcal{H}$ of functions. Wave functions $\psi \in \mathcal{H}, \psi: \R \rightarrow \Co, \psi = \psi(x)$ (time independent). Inner product is defined as 
 \begin{equation}
 	\langle \psi_1, \psi_2 \rangle = \int_{\R} \bar{\psi}_1 (x) \psi_2(t) \dd{x}
 	\label{math:2.1}
 \end{equation}
-Bound states are functions with $\langle \psi, \psi \rangle < \infty$ , e.g. $e^{-x^2}$.  Scattering states not square integrable, e.g. $e^{-ix}$.
+Bound states are functions with $\langle \psi, \psi \rangle < \infty$ , e.g. $e^{-x^2}$.  Scattering states not are square integrable, e.g. $e^{-ix}$.
 
 Given a (real) potential $\phi = \phi(x)$, the time-indepdent Schrödinger equation (SE) reads 
 \begin{equation*}
@@ -94,13 +92,11 @@ and it represents eigenvalue problem. Given $\phi(x)$ one can solve the SE.
 
 Physical needs are typically the opposite: first measure scattering process/data, i.e. reflection and transmission coefficients and try to recover the potential from it. Now the problem is to recover potential from scattering data.
 
-In 1950s, solved by Delfandm, Levitan, Marchenko (GLM) using algorithm. 1967 Gardener, Greene, Krusal, Miura used that algorithm to solve the Cauchy problem for KdV.
+In 1950s, the problem was solved by Delfandm, Levitan, Marchenko (GLM) using algorithm. 1967 Gardener, Greene, Krusal, Miura used that algorithm to solve the Cauchy problem for KdV.
 
-In scattering theory, determine reflection ($R$) and transimission ($T$) coefficients with continuous energies. Bound state has discrete energy levels ($E$).
+In scattering theory, determine reflection ($R$) and transimission ($T$) coefficients with continuous energies. Bound state has discrete energy levels ($E$). GLM method knowledge of $(E, T, R)$ allows to relate the scattering data to the potential. Cauchy problem for KdV with some initial condition $\phi(0, x) = \phi_0 (x)$, in order to get $\phi(t, x)$. Instead, using Schrödinger equation, input scattering data at $t_0$, one get scattering data at $t > 0$. Using GLM integral equation, $\phi(t, x)$ can be computed. This is \textbf{inverse scattering method}.
 
-GLM method knowledge of $(E, T, R)$ allows to relate the scattering data to the potential. Cauchy problem for KdV with some initial condition $\phi(0, x) = \phi_0 (x)$, in order to get $\phi(t, x)$. Instead, using Schrödinger equation, input scattering data at $t_0$, one get scattering data at $t > 0$. Using GLM integral equation, $\phi(t, x)$ can be computed. This is \textbf{inverse scattering method}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555 lecture 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% lecture 5
 The time evolution follows from KdV equation (no time-dependent Schrödinger equation).
 
 \paragraph{Direct scattering}
@@ -130,18 +126,18 @@ Any solution can be expanded in first basis, so
 	\psi_2(x, k) = a(k) \psi_1 (x,k ) + b(k) \bar{\psi}_1(x,k)
 \end{equation*}
 
-Hence, if $a\neq 0$, consider particle coming from $+\infty$ with wave function $e^{-ikx}$. 
+Hence, if $a\neq 0$, consider particle coming from $+\infty$ with wave function $e^{-ikx}$
 \begin{equation}
 	\frac{\psi_2(x,k)}{a(k)} = 
 	\begin{cases}
-		\frac{e^{-ikx}}{a(k)}, & \text{for } x \rightarrow - \infty \\
-		e^{-ikx} + \frac{b(k)}{a(k)} e^{ikx}, & \text{for } x \rightarrow + \infty
+		\frac{e^{-ikx}}{a(k)}, & \text{for } x \rightarrow - \infty, \\
+		e^{-ikx} + \frac{b(k)}{a(k)} e^{ikx}, & \text{for } x \rightarrow + \infty.
 	\end{cases}
 	\label{math:sol_asym}
 \end{equation}
-The transimission coeffcient 
+One defines the transimission coeffcient
 \begin{equation*}
-	t(k) = \frac{1}{a(k)}
+	t(k) = \frac{1}{a(k)},
 \end{equation*}
 and the reflection coefficient
 \begin{equation*}
@@ -155,22 +151,22 @@ For $k \in \Co$, one can prove that
 	\item $a(k)$ is holomorphic in the upper half plane ($\Im(k) > 0$).
 	\item $\left\{\Im(k) \geq 0, |k| \rightarrow \infty \right\} \Rightarrow  |a(k)| \rightarrow 1$.
 	\item The zeroes of $a(k)$ lie on the imaginary axis and number of zeroes is finite if $\int_{\R} (1+|x|)|\phi(x)| < \infty$. Then, $a(i \chi_1) = \dots = a(i\chi_N)  = 0$, where $\chi_n \in \R$ can be ordered such that $ \chi_1 > \dots > \chi_N$.
-		\todo{We want bound states.}
 	\item The asymptotics of $\psi_2$ at the zeroes follows from \eqref{math:sol_asym}
 		\begin{equation*}
 			\psi_2(x, i \chi_n) = 
 			\begin{cases}
-				e^{-i(i\chi_n)x}, & x \rightarrow -\infty \\
-				a(i\chi_n) e^{-i(i\chi_n)x} + b(i\chi_n) e^{i(i\chi_n)x}, & x \rightarrow + \infty
+				e^{-i(i\chi_n)x}, & x \rightarrow -\infty, \\
+				a(i\chi_n) e^{-i(i\chi_n)x} + b(i\chi_n) e^{i(i\chi_n)x}, & x \rightarrow + \infty,
 			\end{cases}
 		\end{equation*}
 		and we have 
 		\begin{equation*}
-			\left[ -\dv[2]{x} + \phi(x)  \right] \psi_2(x, i\chi_n) = -\chi^2_n \psi_2 (x, i\chi_n)
+			\left[ -\dv[2]{x} + \phi(x)  \right] \psi_2(x, i\chi_n) = -\chi^2_n \psi_2 (x, i\chi_n),
 		\end{equation*}
-		with $-\chi_n^2$ the energy,
+		with $-\chi_n^2$ the energy.
 	\item Set $b_n = b(i\chi_n)$, then $b_n \in \R$ and $b_n = (-1)^n |b_n|$ and $i a'(i\chi_n)$ has the same sign as $b_n$.
 \end{itemize}
+Note that bound states correspond to solitons and continuous states correspond to radiation.
 
 \paragraph{Inverse scattering}
 Want to recover potential $\phi(x)$ from scattering data, which consists of transmission and reflection coefficients and energy levels
@@ -309,3 +305,4 @@ with $\beta = \beta(t)$. Finally, \eqref{math:def_Fx} gives
 \end{align*}
 with $\phi_0 = \frac{1}{2\chi} \log(\frac{\beta_0}{2\chi})$ and $\beta(t) = \beta_0 e^{8 \chi^3 t}$. The energy of the corresponding solution to the Schrödinger equation ($\rightarrow - \chi^2$) determines the amplitude and the velocity of the soliton. The solution is of the form $\phi = \phi(x-4\chi^2 t)$, i.e. it represents a wave moving to the right with velocity $4\chi^2$ and phase $\phi_0$.
 $N=2$ (or general $N$) is on the exercise sheet.
+

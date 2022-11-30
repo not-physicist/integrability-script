@@ -1,0 +1,235 @@
+\chapter{Poisson Structures and Classical Yang-Baxter equation}
+Goal is to find appropriate formulation of classically integrable systems with matrix Lax pair.
+
+\section{Lax Pairs and Classical $r$-matrix}
+Consider Lax pair of matrices satisfies
+\begin{equation*}
+	\dv{t} L = \comm{M}{L},
+\end{equation*}
+it implies one can do the transformation
+\begin{equation*}
+	L(t) = g(t) L(0) g^{-1}(t),
+\end{equation*}
+with 
+\begin{equation*}
+	M = \dv{g}{t} g^{-1}.
+\end{equation*}
+If $I(L)$ is a function of $L$ invariant under conjugation, $L \rightarrow g L g^{-1}$, then $I(L(t))$ is a constant of motion.
+
+Suppose $L$ is diagnolizable $L = A \Lambda A^{-1}$ with 
+\begin{equation*}
+	\Lambda = \begin{pmatrix} u_1 & \dots & 0 \\
+		\vdots & \ddots & \vdots \\
+	0 & \dots & u_N \end{pmatrix}.
+\end{equation*}
+
+Define $I_n = \tr(L^{n})$  with $\dot{I}_n = \tr(L^{n-1} \comm{M}{L}) = 0$. One can extract eigenvalues $u_k$ from $I_n = \tr(\Lambda^n) = u_1^n + \dots + u_N^n$, so the eigenvalues $u_k$ are conserved. Question now is: are eigenvalues in involution?
+
+\noindent\fbox{%
+\begin{minipage}{40em}
+% \parbox{\textwidth}{%
+\paragraph{Notation}
+We denote the canonical basis for $N \times N$ matrices as $(E_{\alpha \beta})_{\gamma \delta} = \delta_{\alpha \gamma} \delta_{\beta \delta}$ such that 
+\begin{equation*}
+	L = \sum_{\alpha \beta} L_{\alpha \beta} E_{\alpha \beta},
+\end{equation*}
+with $L_{\alpha \beta}$ being functions on phase space. Let  
+\begin{equation*}
+	L_1 := L \otimes \id = \sum_{\alpha \beta} L_{\alpha \beta} (E_{\alpha \beta} \otimes \id),
+\end{equation*}
+with $\id$ the $N \times  N $ identity matrix and $\otimes$ the tensor product. Then
+\begin{equation*}
+	L_2 := \id \otimes L_{\alpha \beta} = \sum_{\alpha \beta} L_{\alpha \beta} (\id \otimes E_{\alpha \beta}).
+\end{equation*}
+
+For a matrix $T$ living in the tensor product of two copies of $N \times  N$ matrices, set 
+\begin{equation*}
+	T = T_{12} = \sum_{\alpha \beta \gamma \delta} T_{\alpha \beta, \gamma \delta} E_{\alpha \beta} \otimes E_{\gamma \delta}, \quad 
+	T_{21} = \sum_{\alpha \beta \gamma \delta} T_{\alpha \beta, \gamma \delta}  E_{\gamma \delta} \otimes E_{\alpha \beta}.
+\end{equation*}
+We may write $T_{21} = P_{12} T_{12} P_{12}^{-1}$ with $P_{12} = P_{12}^{-1}$ being the permutation operator of specs $1$ and $2$. Most generally, $L_k$ acts on space $k$ and $T_{jk}$ acts on spaces $j$ and $k$, e.g. $L_3 = \id \otimes \id \otimes L \otimes \dots$.
+
+Denote by $\Tr_1$ the partial trace over space $j$ in the tensor product, e.g.
+\begin{equation*}
+	\Tr_1 T_{12} = \sum_{\alpha \beta \gamma \delta} T_{\alpha \beta, \gamma \delta} \tr(E_{\alpha \beta}) E_{\gamma \delta}.
+\end{equation*}
+
+Define $\pb{L_1}{L_2}$ as the matrix of Poisson brackets between the elements of $L$
+\begin{equation*}
+	\pb{L_1}{L_2} = \sum_{\alpha \beta \gamma \delta } \pb{L_{\alpha \beta}}{L_{\gamma \delta}} E_{\alpha \beta} \otimes E_{\gamma \delta}.
+\end{equation*}
+\end{minipage} 
+}
+\todo{What do the difference tensor spaces mean physically?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% lecture 7
+
+For an integrable system the Poisson brackets between the elements of the Lax matrix can be written in a special form
+
+% TODO: number proposition with section
+\begin{prop}
+	The involution property of the eigenvalues of $L$ is equivalent to the existence of a certain function $r_{12}$ on the phase space such that 
+	\begin{equation}
+		\pb{L_1}{L_2} = \comm{r_{12}}{L_1} - \comm{r_{21}}{L_2}
+		\label{math:4.1}
+	\end{equation}
+\end{prop}
+
+\begin{proof}
+	Forward direction: assume that eigenvalues of $L$ Poisson commute, i.e. $\pb{u_j}{u_k}=0$. Consider
+	\begin{align*}
+		\pb{L_1}{L_2} = \pb{A_1 \Lambda_1 A_1^{-1}}{A_2 \Lambda_2 A_2^{-1}}
+	\end{align*}
+	and the right-hand side has $8$ terms after expansion. 
+	There are four terms involve $\pb{A_1}{A_2}$ and can be written as
+	\begin{align*}
+		\comm{\comm{K_{12}}{L_2}}{L_1} = \frac{1}{2} \comm{\comm{K_{12}}{L_2}}{L_1} - \frac{1}{2} \comm{\comm{K_{21}}{L_1}}{L_2},
+	\end{align*}
+	with $K_{12} = \pb{A_1}{A_2} A_1^{-1} A_2^{-1}$. Jacobi identity and $K_{12} =- K_{21}$ have been used. \todo{There seems to be some special properties of $A$ matrices used.} There are other four terms with $\pb{\Lambda_1}{A_2}$ and $\pb{A_1}{\Lambda_2}$ and can be written as 
+	\begin{equation*}
+		\comm{q_{12}}{L_1} - \comm{q_{21}}{L_2},
+	\end{equation*}
+	with $q_{12} = A_2 \pb{A_1}{\Lambda_2} A_1^{-1} A_2^{-1}$.
+
+	One finds 
+	\begin{equation*}
+	\pb{L_1}{L_2} = A_1 A_2 \pb{\Lambda_1}{\Lambda_2} A_1^{-1} A_2^{-1} + \comm{r_{12}}{L_1} - \comm{r_{21}}{L_2},
+	\end{equation*}
+	with $r_{12} = q_{12} + \frac{1}{2} \comm{K_{12}}{L_2}$. If the eigenvalues are in involution, equation \eqref{math:4.1} is valid.
+
+	Backward direction: suppose we have $\pb{L_1}{L_2} = \comm{r_{12}}{L_1} - \comm{r_{21}}{L_2}$. Then
+	\begin{equation}
+		\pb{L_1^n}{L_2^m} = \comm{a_{12}^{n, m}}{L_1} + \comm{b_{12}^{n, m}}{L_2}
+		\label{math:4.2}
+	\end{equation}
+	with 
+	\begin{equation*}
+		a_{12}^{n, m} = \sum_{p=0}^{n-1} \sum_{q=0}^{m-1} L_1^{n-p-1} L_2^{m-q-1} r_{12} L_1^p L_2^q,
+	\end{equation*}
+	and 
+	\begin{equation*}
+		b_{12}^{n, m}\sum_{p=0}^{n-1} \sum_{q=0}^{m-1} L_1^{n-p-1} L_2^{m-q-1} r_{21} L_1^p L_2^q.
+	\end{equation*}
+
+	Taking the race of \eqref{math:4.2} and using that $\tr(\comm{\cdot}{\cdot})=0$, one finds that the functions $\tr(L^n) = \tr(\Lambda^n) = u_1^n + \dots + u_N^n$ are in involution. Thus, eigenvalues $u_k$ of $L$ are in involution.
+\end{proof}
+
+Question now is: which restrictions on $r$-matrix follow from the Jacobi identity for the Poisson bracket \eqref{math:4.1}
+\begin{equation}
+	\comm{L_1}{\comm{r_{12}}{r_{13}} + \comm{r_{12}}{r_{23}} + \comm{r_{32}}{r_{13}} + \pb{L_2}{r_{13}} - \pb{L_3}{r_{12}}  } 
+	% + (1\rightarrow2, 2 \rightarrow 3) + (1 \rightarrow 3, 2 \rightarrow 1)
+	+ (\text{cycl. perm.})
+	= 0.
+	\label{math:r-matrix-jacobi}
+\end{equation}
+In general, it is not easy to capture. Assume that $r$ is a constant $r$-matrix, i.e. indepdent of the dynamical variables (Poisson brackets vanish in \eqref{math:r-matrix-jacobi}). Then a sufficient criterion for \eqref{math:r-matrix-jacobi} to hold is 
+\begin{equation}
+	\comm{r_{12}}{r_{13}} + \comm{r_{12}}{r_{23}} + \comm{r_{32}}{r_{13}} = 0
+\end{equation}
+
+For $r_{12} = - r_{21}$, this equation is the classical Yang-Baxter equation (CYBE)
+\begin{equation}
+\boxed{%
+	\comm{r_{12}}{r_{13}} + \comm{r_{12}}{r_{23}} + \comm{r_{13}}{r_{23}} = 0
+}
+	\label{math:4.3}
+\end{equation}
+
+\begin{example} (harmonic oscillator)
+Consider the dynamical $r$-matrix \todo{$r$-matrix, similar to the Lax pair, is not in general unique. One needs to find one satisfy the properties.}
+\begin{equation*}
+	r_{12} = - \frac{\omega}{4H} \begin{pmatrix} 0 & 1 \\ -1 & 0\end{pmatrix} \otimes L = - \frac{i\omega}{4H} \sigma_2 \otimes L,
+\end{equation*}
+with $H = \frac{1}{2} (p^2 + \omega^2 q^2)$ and $\pb{q}{p} = 1$. The Lax pair for the harmonic oscillator is (with $m=1$)
+\begin{equation*}
+	L = \begin{pmatrix} p & \omega q \\ \omega q & -p \end{pmatrix} = p\sigma_3 + \omega q_1 \sigma_1
+\end{equation*}
+and 
+\begin{equation*}
+	M = \begin{pmatrix} 0 & - \frac{\omega}{2} \\ \frac{\omega}{2} & 0\end{pmatrix} = -\frac{i\omega}{2} \sigma_2
+\end{equation*}
+The eigenvalues of $L$ are $\pm \sqrt{H}$.
+\end{example}
+
+\begin{example} (Lax pairs with spectral parameters)
+
+Often a Lax pair depends on a spectral parameter $u$, such that 
+\begin{equation}
+	\dv{t} L(u) = \comm{M(u)}{L(u)}
+	\label{math:4.4}
+\end{equation}
+as before, the $H_n(u) = \tr(L(u)^n)$ are integrals of motion for any $u$, then $H_n(u) = \sum_{k} u^k H_{n, k}$ and it generates integrals of motion $H_{n, k}$.  Also, the above $r$-matrix and CYBE become spectral parameter dependent.
+\end{example}
+
+\begin{prop}
+	Suppose that \eqref{math:4.1} holds. If we take $H_n = \tr(L^n)$ as Hamiltonians, then the equation of motion admit a Lax representation
+	\begin{equation*}
+		\dv{L}{t_n} := \pb{H_n}{L} \stackrel{!}{=} \comm{M_n}{L}
+	\end{equation*}
+	with $M_n = - n \tr_1 (L_1^{n-1} r_{21})$. $t_n$ is the time generated by the Hamiltonian $H_n$,
+\end{prop}
+
+\begin{example}  (spectral parameter dependent Lax pair)
+
+Remember the Lax pair from E$7$
+\begin{equation*}
+	L = \vec{S} \cdot \vec{\sigma},\quad M = - \frac{i}{2} (\Omega^{-1} \vec{S}) \cdot \vec{\sigma}
+\end{equation*}
+Modify $L$ to $L(u) = L + u H \cdot \id$. It still obeys Lax equation $\dot{L}(u) = \comm{M}{L(u)}$. Spectrum of $L(u)$ includes Hamiltonian: eigenvalues $\left\{ uH + l, uH-l \right\} $ where $l = |\vec{S}|$. 
+
+Classical $r$-matrix is now
+\begin{equation*}
+	r_{12} = - \frac{i}{4} \vec{\sigma_1} \cdot \vec{\sigma_2} - \frac{i}{2} u (\Omega^{-1} \vec{S}) \cdot \vec{\sigma}_1.
+\end{equation*}
+(Index of $\vec{\sigma}$ denotes the space not the component.)
+\end{example}
+
+We have decomposed matrices as 
+\begin{equation*}
+	L = \sum_{\alpha \beta} L_{\alpha \beta} E_{\alpha \beta}
+\end{equation*}
+or 
+\begin{equation*}
+	r_{12} = \sum_{\alpha \beta \gamma \delta} r_{\alpha \beta, \gamma \delta} E_{\alpha \beta} \otimes E_{\gamma \delta}
+\end{equation*}
+Here $E_{\alpha \beta}$ is a canonical basis of Lie algebra $gl(N)$. Consider $r_{12}$ as an element $gl(N) \otimes gl(N)$.
+
+Generalize this framework to a Lie algebra $g$ with basis of generators denoted by $t_a$ and $\comm{t_a}{t_b} = f_{abc} t_c$ with $f$ the structure constant. Then we consider $r_{12} \in g \otimes g$. Note that we do not distinguish upper and lower indices $a, b, c$ here.
+
+\section{Classification and Algebraic Structure of Integrable $r$-matrices}
+Goal is to understand how integrable $r$-matrices look like
+
+\begin{theorem} (Belavin-Drinfeld I)
+	Let $g$ be a finite dimensional simple Lie algebra, and $r = r(u_1 - u_2): \Co \rightarrow g \otimes g$ a solution of the (spectral-parameter depedent) classical YBE 
+	\begin{equation}
+		\comm{r_{12}(u_{12}))}{r_{13} (u_{13})} + \comm{r_{12}(u_{12})}{r_{23}(u_{23})} + \comm{r_{13}(u_{13})}{r_{23}(u_{23})} = 0
+		\label{math:4.5}
+	\end{equation}
+	with $u_{ij} = u_{i} - u_j$.
+
+	Furthermore, assume one of the following three equivalent conditions holds
+	\begin{enumerate}
+		\item $r$ has at least one pole in the complex plane $u = u_1 - u_2$ and there is no Lie subalgebra $g' \subset g$ such that $r \in g' \otimes g'$for any $u$.
+		\item $r(u)$ has a simple pole at the origin, with residual proportional to $C_{\otimes} = \sum_a t_a \otimes t_a$ with $\left\{ t_a \right\} $ being a basis of $g$ orthonormal with respect to a chosen non-degenerate  bilinear form.
+		\item The determinant of the matrix $r^{ab}(u)$ obtained from 
+			\begin{equation*}
+				r(u) = \sum_{a, b} r^{ab}(u) t_a \otimes t_b
+			\end{equation*}
+			does not vanish identically.
+	\end{enumerate}
+
+	Under those assumptions $r_{12}(u) = - r_{21}(-u)$, where $r_{21}(u) = \mathcal{P} r_{12} (u) \mathcal{P} = \sum_{a, b} r^{ab} (u ) t_b \otimes t_a$ and $r(u)$ can be extended meromorphically to the entire $n$-plane. All the poles of $r(u)$ are simple and they form a lattice $\Gamma$. One has three possible equivalent classes of solutions
+	\begin{enumerate}
+		\item rational solution: $\Gamma = \left\{ 0 \right\} $.
+		\item trigonometric: $\Gamma$ is a one-dimensional array
+		\item elliptic: $\Gamma$ is a two-dimensional lattice
+	\end{enumerate}
+\end{theorem}
+
+\begin{example} (classical $r$-matrices)
+\begin{enumerate}
+	\item $r(u) = \frac{1}{u} C_\otimes$ with $C_\otimes = \sum_a t_a \otimes t_a$.
+	\item $r(u) = \frac{1}{\sinh(u)} \begin{pmatrix} (\frac{1}{2} + \frac{1}{2} \sigma_z) \cosh u & \sinh(i u) \sigma^{-} \\ \sinh(i u) \sigma^+ & (\frac{1}{2} - \frac{1}{2} \sigma_z) \cosh(u) \end{pmatrix}$.
+	\item Belavin-Drinfeld showed that elliptic solutions only exist for $g = sl(N)$.
+\end{enumerate}
+\end{example}

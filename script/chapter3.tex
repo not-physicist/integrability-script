@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%% lecture 6
+\chapter{First integrals and Zero curvature representation}
+\section{First integrals and Hamilton's formalism}
+We want to make contact to Liouville integrability for infinite dimensional systems. Remember 
+\begin{equation*}
+	\psi_2 (k, x) = 
+	\begin{cases}
+		e^{-ikx} & x \rightarrow - \infty \\
+		a(k, t) e^{-ikx} + b(k, t) e^{ikx} & x \rightarrow + \infty
+	\end{cases}
+\end{equation*}
+Time evolution of scattering data \eqref{math:2.10} gives $\pdv{t} a(k, t)  = 0$ for all $k$. It means that the scattering data gives infinitely many first integrals, provided they are nontrivial and independent.
+
+One can indeed construct the first integrals
+\begin{equation*}
+	I_n [\phi] = \int_{\R} P_n(\phi, \phi_x, \phi_{x x}, \dots) \dd{x}
+\end{equation*}
+with some polynomials $P_n$ and $\dv{t} I_n = 0$. For example, the momentum
+\begin{equation*}
+	I_0 = \int \frac{1}{2} \phi^2 \dd{x}
+\end{equation*}
+and energy
+\begin{equation*}
+	I_1 = -\frac{1}{2} \int (\phi_x^2 + 2 \phi^3) \dd{x}
+\end{equation*}
+$I_0$ and $I_1$ are associated via Noether's theorem with translation invariance of KdV system.
+
+It can be shown that these conserved quantities are in involution: $\pb{I_m}{I_n} = 0$ with the canonical Poisson bracket
+\begin{equation*}
+	\pb{F}{G} = \int \fdv{F}{\phi(x)} \pdv{x} \fdv{G}{\phi(x)} \dd{x}
+\end{equation*}
+c.f. Liouville integrability. Note that the choices of conserved quantities and Poisson structures are not unique.
+
+\section{Zero curvature representation}
+Integrable systems are compatibility conditions of overdetermined systems of matrix PDEs.
+
+Let $U(u)$ and $V(u)$ be matrix-valued functions of $(t, x)$ depending on the auxiliary spectral parameter $u$. Consider system 
+\begin{equation*}
+	\pdv{F}{x} = U(u) F, \quad \pdv{F}{t} = V(u) F
+\end{equation*}
+with $F$ a vector and $F = F(t, x, u)$. It is overdetermined system: there are twice as many equations as unknowns. Compatibility conditions from cross-differentiation are
+\begin{align*}
+	&(\partial_t \partial_x - \partial_x \partial_t )F, \\
+	\Rightarrow \quad & \partial_t \left(U(u) F\right) - \partial_x \left(V(u) F\right) = \left[ \partial_t U(u) - \partial_x V(u) + \comm{U(u)}{V(u)} \right]  F = 0.
+\end{align*}
+Thus, the zero-curvature condition is 
+\begin{equation}
+	\boxed{
+	\left[ \partial_t U(u) - \partial_x V(u) + \comm{U(u)}{V(u)} \right]  F = 0
+	}
+	\label{math:zero-curv}
+\end{equation}
+
+Most non-linear integrable equations admit a zero curvature representations.
+
+\begin{example} (sine-Gordon equation)
+	Consider the following functions
+\begin{equation*}
+	U = \frac{i}{2} \begin{pmatrix} 2u & \phi_x \\ \phi_x & -2u \end{pmatrix}, \quad
+	V = \frac{1}{4iu} \begin{pmatrix} \cos{\phi} & -i\sin{\phi} \\ i \sin{\phi} & -\cos{\phi} \end{pmatrix},
+\end{equation*}
+with $\phi = \phi(t,x)$. With the zero-curvature equation \eqref{math:zero-curv}, one has the sine-Gordon equation
+\begin{equation*}
+	\phi_{xt} = \sin{\phi}.
+\end{equation*}
+\end{example}
+
+\subsection{From Lax to zero curvature representation}
+Goal is to understand Lax equation as compatibility condition. Consider eigenfunction $f$ of the Lax operator $L$  with eigenvalue $E = u$. Then the equation \eqref{math:2.8} becomes
+\begin{equation*}
+	(L-E) (f_t + Mf) = 0.
+\end{equation*}
+For a simple eigenvalue $E=u$
+\begin{equation*}
+	f_t + Mf = c(t) f.
+\end{equation*}
+
+It has been shown in the exercise that
+\begin{equation}
+	\exists \hat{f}: L \hat{f} = u \hat{f}, \quad  \pdv{\hat{f}}{t} + M \hat{f} = 0,
+	\label{math:3.3}
+\end{equation}
+with $\hat{f} = \hat{f}(t, x, u)$.
+
+Start with overdetermined system \eqref{math:3.3} for a Schrödinger operator $L$ and some differential operator $M$. Lax equation is the compatibility condition
+\begin{equation*}
+	L(\partial_t + M) = (\partial_t + M) L \Rightarrow \dot{L} = \comm{L}{M}
+\end{equation*}
+(to be understood as acting on a test function.)
+
+Consider a general scalar Lax pair
+\begin{align*}
+	L = \pdv[n]{x} + a_{n-1}(t, x) \pdv[n-1]{x} + \dots + a_1(t, x) \pdv{x} + a_0(t,x), \\
+	M = \pdv[m]{x} + b_{m-1}(t, x) \pdv[m-1]{x} + \dots + b_1(t, x) \pdv{x} + b_0(t,x).
+\end{align*}
+We require the Lax equations to hold, then they are non-linear PDEs for coefficients $(a_0, \dots, a_{n-1},  b_0, \dots,b_{m-1})$. 
+
+The linear $n$th-order PDE \eqref{math:3.3} 
+\begin{equation}
+	L \hat{f} = u \hat{f},
+	\label{math:L-eigen}
+\end{equation}
+is equivalent to first-order matrix PDE
+\begin{equation*}
+	\pdv{F}{x}= U_L F,
+\end{equation*}
+with $n \times n$-matrix
+\begin{equation*}
+	U_L = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 & 0 \\
+								 0 & 0 & 1 & \dots & 0 & 0 \\
+							 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\ 
+							 0 & 0 & 0 & 0 & 0 & 1 \\
+							 u-a_0 & -a_1 & -a_2 & \dots & -a_{n-2} & -a_{n-1}
+						 \end{pmatrix},
+\end{equation*}
+and $F = (f_0, f_1, \dots, f_{n-1})^T$ where $f_k = \pdv[k]{\hat{f}}{x}$.
+
+Consider the second equation in \eqref{math:3.3}. Differentiating this equation with respect to $x$ and using \eqref{math:L-eigen} to express $\partial_x^{n} \hat{f}$ in terms of $u$ and lower order derivatives, and repeating this $(n-1)$ times gives an action of $M$ on components of the vector $F$
+\begin{equation*}
+	\pdv{F}{t} = V_m F.
+\end{equation*}
+Zero curvature compatibility conditions are now
+\begin{equation}
+	\partial_t U_L - \partial_x V_m + \comm{U_L}{V_m} = 0,
+\end{equation}
+if $(L, M)$ satisfy Lax equations.
+
+\begin{example}
+(KdV) 
+
+KdV Lax pairs are 
+\begin{equation*}
+	L = - \pdv[2]{x} + \phi(t, x),\quad M = 4 \pdv[3]{x} - 3 \left(\phi \pdv{x} + \pdv{x} \phi\right).
+\end{equation*}
+Set $f_0 = \hat{f} (t, x, u)$ and $f_1 = \partial_x \hat{f}(t, x, u)$. Now the eigenvalue equation \eqref{math:L-eigen} gives
+\begin{equation}
+	(f_0)_x = f_1, \quad (f_1)_x = (\phi - u) f_0.
+	\label{math:f_0_1-eq}
+\end{equation}
+The second equation $\partial_t \hat{f} + M \hat{f}$ gives
+\begin{equation*}
+	(f_0)_t = - 4 (f_0)_{x x x} + 6 \phi f_1 + 3 \phi_x f_0 = - \phi_x f_0 + (2 \phi + 4 u) f_1,
+\end{equation*}
+where the equation \eqref{math:L-eigen} has been used in the last step. Taking $\partial_x$ and using the equation \eqref{math:f_0_1-eq}
+\begin{equation*}
+	(f_1)_t = \left[ (2\phi + 4 u) (\phi - u) - \phi_{x x} \right]  f_0 + \phi_x f_1.
+\end{equation*}
+
+Collect equations in matrix form 
+\begin{equation*}
+	\partial_x F = U_L F, \quad 
+	\partial_t F = V_m F
+\end{equation*}
+where $F = (f_0, f_1)^T$
+\begin{equation*}
+	U_L = \begin{pmatrix} 0 & 1 \\ \phi - u & 0 \end{pmatrix},\quad
+	V_m = \begin{pmatrix} - \phi_x & 2\phi + 4 u \\ 2 \phi^2 - \phi_{x x} + 2\phi u - 4 u^2 & \phi_x \end{pmatrix}
+\end{equation*}
+This is the zero-curvature representation of KdV. \footnote{(Sign difference might come from the minus sign in the Schrödinger operator.)}
+\end{example}
+
+There is a gauge freedom in the zero-curvature representation $(U, V)$ and Lax pair $(L, M)$ (they are in general not unique). Consider an invertible matrix $g=g(t,x)$, then equation \eqref{math:lax_eq} and \eqref{math:zero-curv} are invariant under the transformation
+\begin{align*}
+	&U \rightarrow g U g^{-1} + \dv{g}{x} g^{-1},\quad  V \rightarrow g V g^{-1} + \dv{g}{t} g^{-1}, \\
+	&L \rightarrow g L g^{-1},\quad  M \rightarrow g M g^{-1} + \dv{g}{t} g^{-1}
+	\label{eq:}
+\end{align*}
