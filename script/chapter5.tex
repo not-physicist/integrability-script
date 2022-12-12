@@ -1,0 +1,157 @@
+\chapter{Field Theories in $1+1$ Dimensions}
+
+\section{Classical Field Theory}
+Field is an object $\phi(t, \vec{x})$ deinfed at every point in spacetime. Dynamics of fields governed by Lagrangian density $\lag (\phi_A, \partial_\mu \phi_A)$ and the action
+\begin{equation*}
+	S = \int \dd{t} \int \dd[d-1]{x} \lag = \int \dd[D]{x} \lag
+\end{equation*}
+The Euler-Lagrange equations are
+\begin{equation*}
+	\partial_\mu \left( \pdv{\lag}{(\partial_\mu \phi_A)} \right)  - \pdv{\lag}{\phi_A} = 0
+\end{equation*}
+
+Every continuous symmetry of the Lagrangian gives rise a conserved current $j^{\mu}(x)$ such that the e.o.m. imply the conservation equation
+\begin{equation}
+	\partial_\mu j^{\mu} = 0,
+	\label{math:5.1}
+\end{equation}
+or in other words
+\begin{equation*}
+	\pdv{j^{0}}{t} + \vec{\nabla} \cdot \vec{j} = 0.
+\end{equation*}
+
+A conserved current implies a conserved charge $J$
+\begin{equation}
+	J = \int_{\R^{D-1}} \dd[D-1]{x} j^0(t, \vec{x})
+\end{equation}
+since 
+\begin{align*}
+	\dv{J}{t} = \int \dd[D-1]{x} \pdv{j^0}	{t} = - \int \dd[D-1]{x} \vec{\nabla} \cdot \vec{j} = 0,
+\end{align*}
+where we assume $\lim_{|\vec{x}|\rightarrow 0} \vec{j} = 0$.
+
+We are interested in $D=1 + 1$ dimensions where $\mu = 0, 1$ and metric $\eta_{\mu\nu} = \begin{pmatrix} +1 & 0 \\ 0 & -1 \end{pmatrix}$, $\epsilon_{\mu\nu} = \begin{pmatrix} 0 & 1 \\ -1 & 0\end{pmatrix}$ and $\epsilon^{\mu\nu} = \begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}$. Thus, $j_0 = j^0$, $j_1 = - j^1$ and $j_\mu = \eta_{\mu\nu} j^\nu$.
+
+\paragraph{Nonlocal symmetries}
+Suppose we have a conserved current $j^\mu$ that obeys the zero-curvature condition
+	\begin{equation}
+		\partial_0 j_1 - \partial_1 j_0 + \comm{j_0}{j_1} = 0
+		\label{math:5.2}
+	\end{equation}
+	(we have $U = -j_1$ and $V = -j_0$.) We say that this current is flat. Suppose the current is Lie algebra valued, i.e. $j^\mu \in g$ with $j_\mu = j_{\mu a} t_a$ with $\comm{t_a}{t_b} = f_{abc} t_c$ and zero curvature condition
+	\begin{equation}
+		\partial_0 j_{1a} + \partial_1 j_{0a} + f_{abc} j_{0b} j_{1c} = 0
+	\end{equation}
+
+Define a bilocal current
+\begin{equation*}
+	\hat{j}_a^\mu (t, x) = \epsilon^{\mu\nu} j_{\nu a} (t, x) \frac{1}{2} f_{abc} j_b^\mu (t, x) \int_{-\infty}^x \dd{y} j_c^0 (t, y)
+\end{equation*}
+Using flatness and conservation of $j^\mu$, we find that $\hat{j}$ is conserved $\partial_\mu \hat{j}^\mu = 0$ and the conserved charge 
+\begin{equation*}
+	\hat{J}_a = \int_{-\infty}^{\infty} \hat{j}_a^0 (t,x)	
+\end{equation*}
+with $\dv{\hat{J}}=0$ if $\lim_{|x|\rightarrow 0} j(t, x) =0$.
+
+\subsection{Monodromy- and Transfer-matrix}
+Call classical field theory integrable, if two (spectral-parameter-dependent) matrices $U$ and $V$ exist such that the (Euler Lagrange) equations of motion can be written as a zero-curvature condition
+\begin{equation}
+	\partial_t U - \partial_x V + \comm{U}{V} = 0
+	\label{math:chap5-zero-curv}
+\end{equation}
+
+Alternatively, write this as 
+\begin{equation*}
+	\comm{\D_\mu (u)}{\D_\nu (v)} = 0
+\end{equation*}
+with $D_\mu (u) = \partial_\mu - L_\mu (u)$ and $L_0 = V$ and $L_1 = U$. \eqref{math:chap5-zero-curv} is compatibility conditions for the auxiliary linear problem $\D_\mu \Phi = 0$.
+
+Consider transport matrix $T(t, x_0, x)$ transporting solutions along interval $[x_0, x]$
+\begin{equation*}
+	\Phi(t, x) = T(t, x_0, x) \Phi(t, x_0)
+\end{equation*}
+with $\D_1 T = 0$ and $T(t, x_0, x_0) = \id$. The solution is 
+\begin{equation}
+	T(t, x_0, x) = P \exp[\int_{x_0}^x \dd{x'} U(t, x')]
+	\label{math:5.3}
+\end{equation}
+with $P \exp = \revvec{\exp}$ the path-ordering with greater $x$ to the left. More generally, $T = \revvec{\exp}\left[\int_{\gamma} (U \dd{x} + V \dd{t}) \right]$ (zero curvature means path indepdendence)
+
+Consider time-derivative of $T$: Understand $\revvec{\exp} [\int_{x_0}^{x} U(x') \dd{x'}] \sim (1+\delta_x U(x_n)) \dots (1+ \delta_x U(x_0))$ with $x_0 < x_1 < \dots < x_n = x$ such that $x_{i+1} - x_i = \delta_x \rightarrow 0$.
+
+\begin{align*}
+	\partial_t T &= \int^x_{x_0} \dd{x'} \exp[\int_{x'}^x U\dd{x''} ] \dot{U}(x') \exp[\int_{x_0}^{x'} U \dd{x''}] \\
+					 &= \int_{x_0}^x \dd{x'} \exp[\int_{x'}^x U \dd{x''} ] \left( \pdv{V}{x'} - \comm{U}{V} \right)  \exp[\int_{x_0}^{x'} U\dd{x''}]  \\
+					 &= \int_{x_0}^{x} \dd{x'} \partial_{x'} \left( \exp[\int_{x'}^{x} U \dd{x''}] V(x') \exp[\int_{x_0}^{x'} U \dd{x''}] \right) \\
+					 &= V(x) T - T V(x_0)
+\end{align*}
+where all $\exp$'s are understood as path-ordered.
+
+Set 
+\begin{equation}
+	T(u) = T(t, S_-, S_+, u)
+\end{equation}
+where $S_\pm$ are boundaries of space. This is the \textit{monodromy matrix}.
+
+Distinguish boundary conditions
+\begin{enumerate}
+	\item Case $1$: infinite line $S_\pm = \pm \infty$ (e.g. standard field theory). Assume $V(\pm \infty) = 0$, hence $\partial_t T(u) = 0$.
+	\item Case $2$: periodic boundaries: $S_- \simeq S_+$. Then, $\partial_t T = \comm{V(t, u)}{T}$ which is the Lax equation.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% lecture 9
+
+\begin{example} (Case $1$) 
+	Field theory with conserved and flat current $j^\mu$. Define $\D_\mu(u) =  \partial_\mu - L_\mu (u)$ with $L_\mu = \frac{1}{u^2 - 1} \left[ j_\mu + u \epsilon_{\mu\nu} j^\nu \right] $.
+
+	Then we have $\comm{\D_\mu (u)}{\D_\nu (u)} = 0$ and $j^\mu ( t, \pm \infty) = 0$, thus $V(t, \pm \infty) = L_0 (t, \pm \infty) = 0$.
+
+	After expanding around $u=\infty$, the monodromy matrix is 
+	\begin{equation}
+		T(u) = 1 - \frac{1}{u} \int_{-\infty}^{\infty} \dd{x} j_0 (x) + \frac{1}{u^2} \left[ \int_{-\infty}^{\infty} \dd{x} j_1 (x) + \int_{\infty}^{\infty} \dd{x} \int_{-\infty}^{\infty} \dd{y} j_0(t, x) j_0 (t, y) \right]  + \order{\frac{1}{u^3}}
+	\end{equation}
+	The second integral is the local charge $J$ and the quantity is brackets is the bilocal charge, $\simeq \hat{J} - J^2$. Higher order terms are higher non-local charges.
+\end{example}
+
+
+\begin{example} (Case $2$: periodic boundaries)
+	Lax equation $\partial_t T = \comm{V}{T}$	. Define the transfer matrix as $\mathcal{t}$ as 
+	\begin{equation}
+		\mathcal{t}(u) = \tr(T(u))
+		\label{math:5.5}
+	\end{equation}
+	and thus $\partial_t \mathcal{t} (u) = 0, \forall u$.
+
+	Expansion yields family of $u$-independent conserved charges
+	\begin{equation}
+		\mathcal{t}(u) = \sum_{n \leq 0} u^n Q_n
+	\end{equation}
+	with $\partial_t Q_n = 0$.
+
+	One can loo at Poisson brackets and Lax matrix. Suppose that the canonical Poisson brackets imposed on the fields imply the following \textit{ultralocal} brackets for a matrix $L$
+	\begin{equation}
+		\pb{L_1(t, x, u)}{L_2 (t, y, u')} = \comm{r_{12}(u-u')}{L_1(t, x, u) + L_2 (t, y, u')} \delta(x-y)
+		\label{math:5.6}
+	\end{equation}
+	``Ultralocal'' means there is only $\delta$-function, but no $\delta '$.
+
+	Furthermore, we assume that $r_{12}(u - u')$ does not depedent on the fields and satisfies 
+	\begin{equation}
+		r_{12}(u - u') = - r_{21} (u' - u)
+	\end{equation}
+\end{example}
+
+\begin{theorem} (Sklyanin Exchange Relations)
+	Given \eqref{math:5.6}, the Poisson brackets of the monodromy $T(u) = \exp(L(t, x, u) \dd{x})$	satisfies 
+	\begin{equation}
+		\pb{T_1(u)}{T_2(u')} =  \comm{r_{12}(u - u')}{T_1(u) T_2(u')}
+		\label{math:5.7}
+	\end{equation}
+	One can conclude that the conserved charges generated by the transfer matrix $\mathcal{t}(u) = \tr(T(u))$ are in involution: apply $\tr_1 \otimes \tr_2$ to \eqref{math:5.7}
+	\begin{equation*}
+		\pb{t(u)}{t(u')} = 0
+	\end{equation*}
+	by cyclicity.
+\end{theorem}
+
+The functions $L$ and $T$ furnish the most convenient language to capture field theory integrability. Also quantization can be based on \eqref{math:5.7}.

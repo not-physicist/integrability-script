@@ -202,7 +202,7 @@ Goal is to understand how integrable $r$-matrices look like
 \begin{theorem} (Belavin-Drinfeld I)
 	Let $g$ be a finite dimensional simple Lie algebra, and $r = r(u_1 - u_2): \Co \rightarrow g \otimes g$ a solution of the (spectral-parameter depedent) classical YBE 
 	\begin{equation}
-		\comm{r_{12}(u_{12}))}{r_{13} (u_{13})} + \comm{r_{12}(u_{12})}{r_{23}(u_{23})} + \comm{r_{13}(u_{13})}{r_{23}(u_{23})} = 0
+		\comm{r_{12}(u_{12})}{r_{13} (u_{13})} + \comm{r_{12}(u_{12})}{r_{23}(u_{23})} + \comm{r_{13}(u_{13})}{r_{23}(u_{23})} = 0
 		\label{math:4.5}
 	\end{equation}
 	with $u_{ij} = u_{i} - u_j$.
@@ -233,3 +233,88 @@ Goal is to understand how integrable $r$-matrices look like
 	\item Belavin-Drinfeld showed that elliptic solutions only exist for $g = sl(N)$.
 \end{enumerate}
 \end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% lecture 8
+The assumption to have an $r$-matrix of difference form is not too restrictive. 
+
+\begin{theorem} (Belavin-Drinfeld II)
+	Given the assumptions of B.-D. I but with $r(u_1, u_2)$	 not of difference form and with the classical YBE 
+	\begin{equation}
+	\comm{r_{12}(u_1, u_2)}{r_{13} (u_1, u_3)} + \comm{r_{12}(u_1, u_2)}{r_{23}(u_2, u_3)} + \comm{r_{13}(u_1, u_3)}{r_{23}(u_2, u_3)} = 0
+	\end{equation}
+	Assume that condition (ii) holds. Now (i)-(iii) are no longer equivalent. Assume that dual Coxeter number $c_2$ of our $g$ be non-zero, where $c_2$ is defined by $f_{abc} f_{bcd} = c_2 \delta_{ad}$. Then there exists a transformation which reduces $r$ the the difference form.
+\end{theorem}
+
+The two Belavin-Drinfeld theorems allow us to classify classical integrable structures as well as their possible quantizations.
+
+\paragraph{Algebraic properties of the classical $r$-matrix}
+Consider $r$-matrix as function of $u \in \Co$. 
+
+\begin{example} (Yang's $r$-matrix)	
+	The prototype of a rational solution to the classical cYBE is
+	\begin{equation}
+		r(u_1 - u_2) = c \frac{C_{\otimes}}{u_2 - u_1}
+	\end{equation}
+	with $C_\otimes = t_a \otimes t_a$ denoting the tensor Casimir.
+
+	One can expand the $r$-matrix as 
+	\begin{equation}
+		\frac{r}{c} = \frac{t_a \otimes t_a}{u_2 - u_1} = \sum_{n \geq 0} t_a u_1^n \otimes t_a u_2^{-n-1} =: \sum_{n \geq 0} t_{a, n} \otimes t_{a, -n-1}
+	\end{equation}
+	where $\frac{u_2}{1-q} = u_2 \sum_n q^{n}$ has been used and we assume $|u_1 / u_2| < 1$.
+
+	It seems natural to define $t_{a, n} = u^n t_a$ with 
+	\begin{equation}
+		\comm{t_{a, m}}{t_{b, n}} = f_{abc} t_{c, m+n}
+		\label{math:4.7}
+	\end{equation}
+\end{example}
+
+\begin{definition}
+	\label{def:4.1}
+	The algebra spanned by the $t_{a, n}$ is called the loop algebra $g[u, u^{-1}]$.	
+\end{definition}
+
+Using \eqref{math:4.7}, one can show that the cYBE is satisfied by $r = \sum_{n \geq 0} t_{a, n} \otimes t_{a, -n-1}$. It does not depend on representation. Thus, Yang's $r$-matrix lives in $g[u_1, u_1^{-1}] \otimes g[u_2, u_2^{-1}]$.
+
+\begin{definition}
+	\label{def:4.2}
+	Given a Lie algebra $g$, the universal enveloping algebra (UEA) $U[g]$ is defined as the quotient of the tensor algebra $K \oplus g \oplus (g \otimes g) \oplus (g \otimes g \otimes g) \oplus \dots $ by the elements $b \otimes a - b \otimes a - \comm{a}{b}$ for $a, b \in g$. That is $t_a \otimes t_b - t_b \otimes t_a$ is identified with $f_{abc}t_c$.
+
+	The UEA can be equipped with a Hopf algebra structure with 
+	\begin{itemize}
+	\item  coproduct
+	\begin{equation}
+		\Delta (a) = a \otimes \id + 1 \otimes a
+	\end{equation}
+	\item antipole
+	\begin{equation}
+		s(a) = 0
+	\end{equation}
+	\item co-unit
+	\begin{equation}
+		\epsilon(a) = 0
+	\end{equation}
+	for $a \in g$.
+	\end{itemize}
+\end{definition}
+
+\begin{example} 
+	The quadratic Casimir $t_a t_a$  or $t_a \otimes t_a$ is element of $U[g]$.
+\end{example}
+
+The above coproduct is called co-commutative since $\Delta^{\text{op}} := \mathcal{P} \Delta \mathcal{P} = \id \otimes a + a \otimes \id = \Delta$, where $\Delta^{\text{op}}$ is the opposite coproduct.
+
+Quantization of this algebraic structure leads to the definition of a non-co-commutative coproduct with 
+\begin{equation*}
+	\Deltaop - \Delta \sim \hbar
+\end{equation*}
+Remember: $xp - px = 0$ but after quantization $\hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar$. Quantum groups/algebra can be understood as deformations $U_\hbar [g]$ of universal enveloping algebras.
+
+\paragraph{More algebraic notions}
+One may introduce the concept of Lie algebra for which $r$-matrix is of central importance. A Lie bialgebra is called 
+\begin{itemize}
+	\item  co-boundary: if it has an $r$-matrix
+	\item quasi-triangular: if $r$-matrix obeys the cYBE
+	\item triangular: if $r$-matrix is anti-symmetric.
+\end{itemize}

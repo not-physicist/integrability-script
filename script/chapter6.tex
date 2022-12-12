@@ -1,0 +1,122 @@
+\chapter{Quantum Yang-Baxter Equation}
+\section{On the Definition of Quantum Integrability}
+Remember classical integrability for finite-dimensional system could be defined by existence of $N$ algebraically independent integrals of motions $\pb{I_i}{I_j} = 0, \forall i, j$ and $\pb{H}{I_i} = 0, \forall i$.
+
+Ideally, one would quantize the system by
+\begin{equation*}
+	q \rightarrow \hat{q}, p \rightarrow \hat{p}, H \rightarrow \hat{H}, \pb{}{} \rightarrow \comm{}{}
+\end{equation*}
+The naive definition of quantum integrability would be the existence of $N$ independent operators $\hat{I}_1, \dots, \hat{I}_N$ that commute with $\hat{H}$ and among each other.
+
+What should independent mean here? Assume the spectrum is non-degenerate (to avoid some subtlety) and $\comm{\hat{H}}{\hat{I}} = 0$, then one can find the simutaneous eigenstates
+\begin{equation*}
+	\hat{H} \ket{\psi_j} = E_j \ket{\psi_j}, \;
+	\hat{I} \ket{\psi_j} = a_j \ket{\psi_j}, \;
+	j = 1, \dots, N.
+\end{equation*}
+Hence, one may write
+\begin{equation*}
+	\hat{I} = \sum_{j=1}^N a_j \ket{\psi_j} \bra{\psi_j}	.
+\end{equation*}
+
+Then any $\hat{I}$ can be written as a polynomial in $\hat{H}$
+\begin{equation*}
+	\hat{I} = \sum_{j=1}^N a_j \prod_{k=1, k\neq j }^N \frac{\hat{H} - E_k}{E_j - E_k} = \sum_{j=1}^N \hat{H}^{k-1} \sum_{j=1}^N m_{kj} a_j,
+\end{equation*}
+where the $m_{kj}$ are functions of eigenvalues $E_l$ only.
+
+Thus, no two commuting operators are algebraically independent, which at most $N$ commuting operators  which are linearly independent. However, linear independent are also $\left\{ \hat{H}, \hat{H}^2, \hat{H}^3, \dots \right\} $. The naive definition of quantum integrability is \textit{not good}.
+
+\section{Factorized Scattering}
+Scattering processes are essential to understand the world (e.g. LHC). Consider relativistic massive $(1+1)$-dimensional model. One space dimension implies ordering of particles is well-defined. Translate particle momentum $p^\mu_k (\mu = 0, 1)$ into rapidity
+\begin{equation}
+	p_k^0 = m \cosh(u_k),\;
+	p_k^1 = m \sinh(u_k).
+\end{equation}
+which ensures the particle is on-shell $p^2 = (p^0)^2 - (p^1)^2 = m^2$.
+
+Alternatively, one can use lightcone momenta
+\begin{equation*}
+	p^+ = p^0 + p^1 = m e^u, \;
+	p^- = p^0 - p^1 = m e^{-u}.
+\end{equation*}
+which transform under Lorentz boosts $B_\alpha: u \rightarrow u + \alpha$
+\begin{equation*}
+	p^+ \rightarrow p^+ e^\alpha, p^- \rightarrow p^- e^{-\alpha}.
+\end{equation*}
+
+Tensors of the Lorentz group in $1+1$-dimensions are labeled by their Lorentz spin $s$ according to
+\begin{equation*}
+	B_\alpha: Q_s \rightarrow e^{s\alpha} Q_s ,
+	\label{math:6.1}
+\end{equation*}
+Hence, $p^\pm$ have spin $s=\pm 1$.
+
+Suppose $Q_s$ is local conserved quantity of spin $s > 0$ ($s<0$ from parity) in a scattering process of $n$ particles of type $A_i, i = 1, \dots n$ with masses $m_i$. $Q_s$ acts on one-particle states as  ($p_i^s = p_i^{+ s}$)
+\begin{equation*}
+	Q_s \ket{A_i(u)} \sim p^s_i \ket{A_i(u)}
+\end{equation*}
+Action on multi-particle states (due to locality of $Q_s$)
+\begin{equation}
+	Q_s \ket{A_1(u_1) \dots A_n (u_n)} \sim \sum_{k=1}^n p^s_k \ket{A_1 (u_1) \dots A_n (u_n)}
+	\label{math:6.2}
+\end{equation}
+
+In a scattering process, we have (here $p=p^+, \bar{p} = p^-$)
+\begin{equation}
+	\sum_{i \in \left\{ \text{in} \right\} } p^s_i = \sum_{f \in \left\{ \text{out} \right\} } p_f^s \stackrel{\text{parity}}{\rightarrow} 
+	\sum_{i \in \left\{ \text{in} \right\} } \bar{p}^s_i = \sum_{f \in \left\{ \text{out} \right\} } \bar{p}_f^s
+	\label{math:6.3}
+\end{equation}
+For $s=1$ this is energy and momentum conservation. 
+
+Consider integrable system with infinitely many conserved charges $Q_s$ of different spin $s$. By \eqref{math:6.3}
+\begin{equation}
+	\left\{ p_i^\mu | i \in \text{in} \right\}  = \left\{ p_f^\mu | f \in \text{out} \right\} 
+\end{equation}
+Thus there is no particle production or annihilation. Individual momenta are conserved.
+
+\paragraph{Factorization}
+Relativistic invariance means two-particle scattering matrix may only depend on
+\begin{equation*}
+	p^\mu_i p_j^\nu \eta_{\mu\nu} = m_i m_j \cosh(u_i - u_j).
+\end{equation*}
+From now on we write $u_{ij} := u_i - u_j$.
+
+Since all momenta are conserved, the most general two-particle $S$-matrix is
+\begin{equation}
+	\ket{A_i (u_1) A_j (u_2)}_{\text{in}} = \sum_{k, l} S^{kl}_{ij} (u_{12}) \ket{A_k(u_2) A_l(u_1)}_{\text{out}}
+\end{equation}
+
+\begin{prop}
+The $n$-particle $S$-matrix in a $2d$ integrable theory can always be written as the product of $ \begin{pmatrix} n \\ 2 \end{pmatrix}$ two-particle $S$-matrices.
+\end{prop}
+
+\begin{proof} (schematically)
+Choose initial states with $n$ particles and $u_1 > u_2 > \dots > u_n$, $x_1 < x_2 < \dots < x_n$. After $n(n-1)/2$ pair collisions, the particles reach the infinite future in inverse ordering. Scattering described by 
+\begin{equation*}
+	S \ket{A_{i1} (u_1) \dots A_{in} (u_n)}_{\text{in}} =\sum_{j_1, \dots, j_n} S_{i1, \dots, in}^{j1, \dots, jn} \ket{A_{j1}(u_n) \dots A_{jn}(u_1)}_{\text{out}}.
+\end{equation*}
+Integrability: assume infinitely many local commuting and conserved operators $Q_s$
+\begin{equation*}
+	Q_s \ket{A_{i1} (u_1) \dots A_{in} (u_n)} =(q_s(u_1) + \dots + q_n(u_s)) \ket{A_{i1}(u_1) \dots A_{in}(u_n)},
+\end{equation*}
+with $q_s(u_1) \sim (p_1^+)^s$. Commuting charges means these can be simultaneously diagonalized. 
+
+Consider particles as localized wave-packets:
+\begin{equation*}
+	\psi(x) \sim \int_{-\infty}^{\infty} \dd{p} e^{-a^2(p-p_1)^2} e^{i p (x - x_1)}.
+\end{equation*}
+An operator acting on $\psi$ gives momentum dependent phase factor 
+\begin{equation*}
+	\rightarrow \tilde{\psi} = \int_{-\infty}^{\infty} \dd{p} e^{-a^2(p-p_1)^2} e^{ip(x-x_1)} e^{-i\phi(p)},
+\end{equation*}
+
+Major contribution to integral close to $p_1$. Expand $\phi(p)$ and find modified values ($e^{-i\phi(p)} \simeq e^{-i\phi(p_1)} \cdot e^{-ip \phi'(p_1)}$)
+\begin{equation*}
+	\tilde{p}_1 = p_1, \tilde{x}_1 = x_1 + \phi'(p_1).
+\end{equation*}
+Position of particle $k$ is shifted by $\phi'(k)$.
+
+Assume $Q_s \sim P^s$ and act with $e^{i\alpha Q_s}$, then $\phi_s(p) = \alpha p^s$. The particle with momentum $p_k$ is shifted by $s \alpha p_k^{s-1}$. ($s=1$: momentum operator $P$ shifts by constant.)
+\end{proof}
